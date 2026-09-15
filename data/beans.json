@@ -1,0 +1,6 @@
+[
+{"id":"banko-gotiti","name":"Banko Gotiti","zh":"班可果丁丁","country":"Ethiopia","region":"Yirgacheffe","type":"處理場","altitude":"1,900–2,100 m","variety":"Ethiopian Landrace","process":"Washed","flavors":["茉莉","柑橘","蜂蜜","白花"],"sweet":4,"acid":4,"body":2,"intro":"位於衣索比亞南部高海拔咖啡帶的知名處理場之一。此處示範資料用於 Coffee Atlas V1 介面與搜尋流程。"},
+{"id":"worka-nenke","name":"Worka Nenke","zh":"沃卡・嫩科","country":"Ethiopia","region":"Yirgacheffe","type":"處理場","altitude":"約 2,000 m","variety":"Ethiopian Landrace","process":"Natural","flavors":["莓果","桃子","花香","甜感"],"sweet":5,"acid":4,"body":3,"intro":"Worka 一帶以高海拔與明亮花果調性受到精品咖啡市場關注；V1 先以簡化資料呈現。"},
+{"id":"guji-hambela","name":"Guji Hambela","zh":"古吉・罕貝拉","country":"Ethiopia","region":"Guji","type":"產區示範","altitude":"1,900–2,200 m","variety":"Ethiopian Landrace","process":"Natural","flavors":["藍莓","桃子","茉莉","蜂蜜"],"sweet":4,"acid":4,"body":3,"intro":"Guji 高海拔產區示範條目，用來測試國家 → 產區 → 豆卡的探索流程。"},
+{"id":"panama-geisha","name":"Panama Geisha","zh":"巴拿馬藝伎","country":"Panama","region":"Boquete","type":"品種示範","altitude":"1,500–2,000 m","variety":"Geisha","process":"Washed / Natural","flavors":["佛手柑","茉莉","柑橘","茶感"],"sweet":4,"acid":5,"body":2,"intro":"V1 的跨國搜尋示範資料；正式版會再拆分至實際莊園與批次。"}
+]
