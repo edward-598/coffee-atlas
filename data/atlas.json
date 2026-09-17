@@ -4,37 +4,31 @@
       "id": "ethiopia",
       "name": "Ethiopia",
       "zh": "衣索比亞",
-      "tagline": "The birthplace of coffee",
       "profile": [
         "Floral",
         "Citrus",
         "Tea-like"
-      ],
-      "intro": "咖啡最重要的起源地之一，高海拔、原生品種與多樣處理方式，形成非常廣泛的香氣與風味表現。"
+      ]
     },
     {
       "id": "panama",
       "name": "Panama",
       "zh": "巴拿馬",
-      "tagline": "Geisha & high-elevation lots",
       "profile": [
+        "Geisha",
         "Floral",
-        "Tropical",
-        "Elegant"
-      ],
-      "intro": "V1 預留國家節點，後續擴充產區與莊園。"
+        "Tropical"
+      ]
     },
     {
       "id": "colombia",
       "name": "Colombia",
       "zh": "哥倫比亞",
-      "tagline": "Sweet & diverse",
       "profile": [
         "Sweet",
         "Fruity",
         "Balanced"
-      ],
-      "intro": "V1 預留國家節點，後續擴充產區與莊園。"
+      ]
     }
   ],
   "regions": [
@@ -48,8 +42,7 @@
         "Floral",
         "Citrus",
         "Tea-like"
-      ],
-      "intro": "衣索比亞最具代表性的精品咖啡產區名稱之一，以明亮花香、柑橘與乾淨茶感聞名。"
+      ]
     },
     {
       "id": "guji",
@@ -61,8 +54,7 @@
         "Berry",
         "Floral",
         "Tropical"
-      ],
-      "intro": "常見花香、莓果與熱帶水果調性。V1 先建立節點。"
+      ]
     },
     {
       "id": "sidama",
@@ -74,8 +66,7 @@
         "Citrus",
         "Stone Fruit",
         "Sweet"
-      ],
-      "intro": "風味跨度大，常見柑橘、核果與甜感。V1 先建立節點。"
+      ]
     }
   ],
   "stations": [
@@ -92,21 +83,21 @@
         "Stone Fruit",
         "Sweet"
       ],
-      "intro": "位於 Gedeb 一帶的咖啡來源節點。Coffee Atlas 將處理場與實際 Bean / Lot 分開，讓同一來源的不同處理法與批次可以共用背景資料。"
+      "intro": "位於 Gedeb 一帶的咖啡來源節點。V1.5 將處理場與 Bean / Lot 分開管理。"
     },
     {
       "id": "worka-nenke",
       "region": "yirgacheffe",
       "name": "Worka Nenke",
       "zh": "沃卡・南柯",
-      "type": "Washing Station / Origin node",
+      "type": "Origin node",
       "altitude": "高海拔產區",
       "profile": [
         "Floral",
         "Fruit",
         "Sweet"
       ],
-      "intro": "V1 示範用第二個處理場節點，後續可再補充經查證的完整資料與批次。"
+      "intro": "示範用處理場節點，後續補充完整查證資料。"
     }
   ],
   "beans": [
@@ -149,48 +140,23 @@
     {
       "name": "Pour Over 手沖",
       "temp": "90–94°C",
-      "ratio": "15 g : 240 g",
+      "ratio": "15g : 240g",
       "time": "2:30–3:00",
-      "grind": "中細研磨",
       "roast": "淺焙／中焙"
     },
     {
       "name": "French Press 法壓",
       "temp": "88–94°C",
-      "ratio": "15 g : 240 g",
+      "ratio": "15g : 240g",
       "time": "4:00",
-      "grind": "中粗研磨",
       "roast": "中焙／深焙"
     },
     {
       "name": "AeroPress",
       "temp": "85–92°C",
-      "ratio": "15 g : 200–230 g",
+      "ratio": "15g : 200–230g",
       "time": "1:30–2:30",
-      "grind": "中細～中研磨",
-      "roast": "淺焙／中焙／深焙"
-    },
-    {
-      "name": "Espresso 義式",
-      "temp": "90–94°C",
-      "ratio": "依配方調整",
-      "time": "約 25–35 秒",
-      "grind": "細研磨",
-      "roast": "中焙／深焙"
-    }
-  ],
-  "roasters": [
-    {
-      "month": "September 2026",
-      "name": "Roaster sample",
-      "country": "Taiwan",
-      "city": "—",
-      "address": "正式月選時以店家官方資料確認",
-      "about": "V1 先建立文字型 Roasters of the Month 版型。圖片不是必要欄位。",
-      "space": "可介紹建築、空間設計與店內氛圍。",
-      "coffee": "可介紹烘焙取向、手沖、義式與選豆特色。",
-      "food": "有代表性餐食或甜點才顯示。",
-      "why": "每月精選 3–5 家，保留編輯選店理由。"
+      "roast": "全烘焙度"
     }
   ]
 }
