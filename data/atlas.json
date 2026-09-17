@@ -1,5 +1,17 @@
 {
+  "version": "1.6",
+  "updated": "2026-09-17",
   "countries": [
+    {
+      "id": "taiwan",
+      "name": "Taiwan",
+      "zh": "台灣",
+      "profile": [
+        "High Mountain",
+        "Small Lots",
+        "Diverse Processing"
+      ]
+    },
     {
       "id": "ethiopia",
       "name": "Ethiopia",
@@ -8,6 +20,16 @@
         "Floral",
         "Citrus",
         "Tea-like"
+      ]
+    },
+    {
+      "id": "kenya",
+      "name": "Kenya",
+      "zh": "肯亞",
+      "profile": [
+        "Bright Acidity",
+        "Fruit-forward",
+        "Highland Coffee"
       ]
     },
     {
@@ -29,9 +51,32 @@
         "Fruity",
         "Balanced"
       ]
+    },
+    {
+      "id": "costa-rica",
+      "name": "Costa Rica",
+      "zh": "哥斯大黎加",
+      "profile": [
+        "Clean",
+        "Balanced",
+        "Regional Diversity"
+      ]
     }
   ],
   "regions": [
+    {
+      "id": "alishan",
+      "country": "taiwan",
+      "name": "Alishan",
+      "zh": "阿里山",
+      "altitude": "高海拔山區",
+      "profile": [
+        "Floral",
+        "Fruit",
+        "Sweet"
+      ],
+      "source": "Taiwan Tourism / MOA"
+    },
     {
       "id": "yirgacheffe",
       "country": "ethiopia",
@@ -42,7 +87,8 @@
         "Floral",
         "Citrus",
         "Tea-like"
-      ]
+      ],
+      "status": "legacy-demo"
     },
     {
       "id": "guji",
@@ -54,7 +100,8 @@
         "Berry",
         "Floral",
         "Tropical"
-      ]
+      ],
+      "status": "legacy-demo"
     },
     {
       "id": "sidama",
@@ -66,16 +113,192 @@
         "Citrus",
         "Stone Fruit",
         "Sweet"
-      ]
+      ],
+      "status": "legacy-demo"
+    },
+    {
+      "id": "central-kenya",
+      "country": "kenya",
+      "name": "Central Kenya",
+      "zh": "肯亞中部",
+      "altitude": "Highland",
+      "profile": [
+        "Bright Acidity",
+        "Fruit",
+        "Structured"
+      ],
+      "source": "Kenya AFA Coffee Yearbook"
+    },
+    {
+      "id": "eastern-kenya",
+      "country": "kenya",
+      "name": "Eastern Kenya",
+      "zh": "肯亞東部",
+      "altitude": "Highland",
+      "profile": [
+        "Bright",
+        "Sweet",
+        "Fruit"
+      ],
+      "source": "Kenya AFA Coffee Yearbook"
+    },
+    {
+      "id": "rift-kenya",
+      "country": "kenya",
+      "name": "Rift Regions",
+      "zh": "裂谷產區",
+      "altitude": "Varied",
+      "profile": [
+        "Fruit",
+        "Sweet",
+        "Balanced"
+      ],
+      "source": "Kenya AFA Coffee Yearbook"
+    },
+    {
+      "id": "boquete",
+      "country": "panama",
+      "name": "Boquete",
+      "zh": "波奎特",
+      "altitude": "約 1,200–2,200 m",
+      "profile": [
+        "Floral",
+        "Tropical",
+        "Elegant"
+      ],
+      "source": "SCAP"
+    },
+    {
+      "id": "huila",
+      "country": "colombia",
+      "name": "Huila",
+      "zh": "威拉",
+      "altitude": "Regional",
+      "profile": [
+        "Floral",
+        "Fruit",
+        "Caramel",
+        "Citrus Acidity"
+      ],
+      "source": "Café de Colombia"
+    },
+    {
+      "id": "tolima",
+      "country": "colombia",
+      "name": "Tolima",
+      "zh": "托利馬",
+      "altitude": "Regional",
+      "profile": [
+        "Sweet",
+        "Fruit",
+        "Citrus Acidity",
+        "Creamy Body"
+      ],
+      "source": "Café de Colombia"
+    },
+    {
+      "id": "valle-del-cauca",
+      "country": "colombia",
+      "name": "Valle del Cauca",
+      "zh": "考卡山谷",
+      "altitude": "Regional",
+      "profile": [
+        "Caramel",
+        "Red Fruit",
+        "Citrus Acidity"
+      ],
+      "source": "Café de Colombia"
+    },
+    {
+      "id": "tarrazu",
+      "country": "costa-rica",
+      "name": "Tarrazú / Los Santos",
+      "zh": "塔拉珠／洛斯桑托斯",
+      "altitude": "Mountain valleys & slopes",
+      "profile": [
+        "Arabica",
+        "Caturra",
+        "Catuaí"
+      ],
+      "source": "ICAFE"
+    },
+    {
+      "id": "central-valley-cr",
+      "country": "costa-rica",
+      "name": "Central Valley",
+      "zh": "中央谷地",
+      "altitude": "800–1,600 m",
+      "profile": [
+        "Balanced",
+        "Chocolate",
+        "Fine Acidity"
+      ],
+      "source": "ICAFE"
+    },
+    {
+      "id": "tres-rios",
+      "country": "costa-rica",
+      "name": "Tres Ríos",
+      "zh": "特雷斯里奧斯",
+      "altitude": "1,200–1,650 m",
+      "profile": [
+        "Fine Acidity",
+        "Balanced",
+        "Aromatic"
+      ],
+      "source": "ICAFE"
+    },
+    {
+      "id": "brunca",
+      "country": "costa-rica",
+      "name": "Brunca",
+      "zh": "布倫卡",
+      "altitude": "Up to ~1,700 m in Pérez Zeledón",
+      "profile": [
+        "Aromatic",
+        "Body",
+        "Acidity"
+      ],
+      "source": "ICAFE"
     }
   ],
   "stations": [
+    {
+      "id": "zouzhouyuan",
+      "region": "alishan",
+      "name": "ZouZhouYuan",
+      "zh": "鄒築園",
+      "type": "Coffee Estate",
+      "altitude": "約 1,300 m",
+      "profile": [
+        "Geisha",
+        "Floral",
+        "Citrus"
+      ],
+      "intro": "阿里山咖啡莊園。官方農業資料記載莊園約位於海拔 1,300 公尺，並種植藝伎等多種咖啡品種。",
+      "source": "MOA / ARDSWC"
+    },
+    {
+      "id": "zhuowushan",
+      "region": "alishan",
+      "name": "Zhuo-Wu Mountain Coffee Farm",
+      "zh": "卓武山咖啡農場",
+      "type": "Coffee Farm",
+      "altitude": "約 1,200 m（競賽批次）",
+      "profile": [
+        "Geisha",
+        "Natural",
+        "Honey"
+      ],
+      "intro": "嘉義阿里山咖啡代表性莊園之一；官方競賽資料可查到藝伎日曬與蜜處理批次。",
+      "source": "MOA"
+    },
     {
       "id": "banko-gotiti",
       "region": "yirgacheffe",
       "name": "Banko Gotiti",
       "zh": "班可果丁丁",
-      "type": "Washing Station",
+      "type": "Washing Station / Origin node",
       "altitude": "約 1,900–2,100 m",
       "profile": [
         "Floral",
@@ -83,24 +306,125 @@
         "Stone Fruit",
         "Sweet"
       ],
-      "intro": "位於 Gedeb 一帶的咖啡來源節點。V1.5 將處理場與 Bean / Lot 分開管理。"
+      "intro": "V1.5 延續節點；V1.6 後續批次將再補正式來源核對。",
+      "status": "legacy-demo"
     },
     {
-      "id": "worka-nenke",
-      "region": "yirgacheffe",
-      "name": "Worka Nenke",
-      "zh": "沃卡・南柯",
-      "type": "Origin node",
-      "altitude": "高海拔產區",
+      "id": "altieri",
+      "region": "boquete",
+      "name": "Altieri Coffee Farms",
+      "zh": "Altieri 咖啡莊園",
+      "type": "Coffee Farm",
+      "altitude": "1,600–2,200 m",
       "profile": [
-        "Floral",
-        "Fruit",
-        "Sweet"
+        "Geisha",
+        "Typica",
+        "Catuai",
+        "Caturra"
       ],
-      "intro": "示範用處理場節點，後續補充完整查證資料。"
+      "intro": "位於 Barú 火山東坡 Callejón Seco 一帶，SCAP 資料列出多種品種與水洗、日曬及發酵處理。",
+      "source": "SCAP"
+    },
+    {
+      "id": "finca-lerida",
+      "region": "boquete",
+      "name": "Finca Lérida",
+      "zh": "Lérida 莊園",
+      "type": "Coffee Estate",
+      "altitude": "1,500–2,000 m",
+      "profile": [
+        "Geisha",
+        "Pacamara",
+        "Catuai",
+        "Typica"
+      ],
+      "intro": "由五個 Boquete 農園組成；SCAP 列出水洗、日曬、Honey、Black Honey、ASD 等處理。",
+      "source": "SCAP"
+    },
+    {
+      "id": "agricola-geisha",
+      "region": "boquete",
+      "name": "Agricola Geisha",
+      "zh": "Agricola Geisha",
+      "type": "Coffee Farm",
+      "altitude": "1,350–1,900+ m",
+      "profile": [
+        "Geisha",
+        "Pacamara",
+        "Paca"
+      ],
+      "intro": "農園位於 Boquete 的 Jaramillo Centro、Alto Jaramillo 與 La India，SCAP 列出 Geisha、Pacamara、Paca 等咖啡。",
+      "source": "SCAP"
+    },
+    {
+      "id": "kotowa",
+      "region": "boquete",
+      "name": "Café Kotowa",
+      "zh": "Kotowa",
+      "type": "Coffee Estates",
+      "altitude": "約 1,300–1,850 m（依農園）",
+      "profile": [
+        "Geisha",
+        "Caturra",
+        "Pacamara",
+        "Typica"
+      ],
+      "intro": "Boquete 咖啡品牌與農園群，SCAP 公開多個農園的品種、處理法與杯測特徵。",
+      "source": "SCAP"
     }
   ],
   "beans": [
+    {
+      "id": "zou-geisha-natural",
+      "station": "zouzhouyuan",
+      "name": "ZouZhouYuan Geisha Natural",
+      "process": "Natural",
+      "variety": "Geisha",
+      "altitude": "1,300 m",
+      "flavors": [
+        "Floral",
+        "Citrus"
+      ],
+      "sweetness": 4,
+      "acidity": 4,
+      "body": 3,
+      "note": "2021 official competition lot; flavor tags are estate/variety context, not the competition score sheet.",
+      "source": "MOA"
+    },
+    {
+      "id": "zhuowushan-geisha-natural",
+      "station": "zhuowushan",
+      "name": "Zhuo-Wu Mountain Geisha Natural",
+      "process": "Natural",
+      "variety": "Geisha",
+      "altitude": "1,200 m",
+      "flavors": [
+        "Geisha",
+        "Natural"
+      ],
+      "sweetness": 0,
+      "acidity": 0,
+      "body": 0,
+      "note": "Official competition record: Geisha, 1,200 m, Natural.",
+      "source": "MOA"
+    },
+    {
+      "id": "zhuowushan-geisha-honey",
+      "station": "zhuowushan",
+      "name": "Zhuo-Wu Mountain Geisha Honey",
+      "process": "Honey",
+      "variety": "Geisha",
+      "altitude": "1,200 m",
+      "flavors": [
+        "Geisha",
+        "Honey Process"
+      ],
+      "sweetness": 0,
+      "acidity": 0,
+      "body": 0,
+      "note": "Official competition record: Geisha, 1,200 m, Honey.",
+      "source": "MOA"
+    },
     {
       "id": "banko-washed",
       "station": "banko-gotiti",
@@ -116,7 +440,8 @@
       ],
       "sweetness": 4,
       "acidity": 4,
-      "body": 3
+      "body": 3,
+      "status": "legacy-demo"
     },
     {
       "id": "banko-natural",
@@ -133,7 +458,111 @@
       ],
       "sweetness": 5,
       "acidity": 4,
-      "body": 3
+      "body": 3,
+      "status": "legacy-demo"
+    },
+    {
+      "id": "altieri-geisha",
+      "station": "altieri",
+      "name": "Altieri Geisha",
+      "process": "Natural / Washed / Fermented (farm options)",
+      "variety": "Geisha",
+      "altitude": "1,600–2,200 m farm range",
+      "flavors": [
+        "Jasmine",
+        "Strawberry",
+        "Melon",
+        "Lemongrass",
+        "Orange"
+      ],
+      "sweetness": 5,
+      "acidity": 4,
+      "body": 3,
+      "source": "SCAP"
+    },
+    {
+      "id": "altieri-typica",
+      "station": "altieri",
+      "name": "Altieri Typica",
+      "process": "Farm processes vary",
+      "variety": "Typica",
+      "altitude": "1,700–1,750 m",
+      "flavors": [
+        "Floral",
+        "Citrus",
+        "Orange",
+        "Green Tea",
+        "Dark Chocolate"
+      ],
+      "sweetness": 4,
+      "acidity": 4,
+      "body": 3,
+      "source": "SCAP"
+    },
+    {
+      "id": "lerida-geisha",
+      "station": "finca-lerida",
+      "name": "Finca Lérida Geisha",
+      "process": "Washed / Natural / Honey / Black Honey / ASD",
+      "variety": "Geisha",
+      "altitude": "1,500–2,000 m estate range",
+      "flavors": [
+        "Geisha",
+        "Estate Lot"
+      ],
+      "sweetness": 0,
+      "acidity": 0,
+      "body": 0,
+      "source": "SCAP"
+    },
+    {
+      "id": "agricola-geisha-natural",
+      "station": "agricola-geisha",
+      "name": "Agricola Geisha Natural",
+      "process": "Natural",
+      "variety": "Geisha",
+      "altitude": "1,350–1,900+ m farm range",
+      "flavors": [
+        "Geisha",
+        "Natural"
+      ],
+      "sweetness": 0,
+      "acidity": 0,
+      "body": 0,
+      "source": "SCAP"
+    },
+    {
+      "id": "agricola-geisha-washed",
+      "station": "agricola-geisha",
+      "name": "Agricola Geisha Washed",
+      "process": "Washed",
+      "variety": "Geisha",
+      "altitude": "1,350–1,900+ m farm range",
+      "flavors": [
+        "Geisha",
+        "Washed"
+      ],
+      "sweetness": 0,
+      "acidity": 0,
+      "body": 0,
+      "source": "SCAP"
+    },
+    {
+      "id": "kotowa-duncan-geisha",
+      "station": "kotowa",
+      "name": "Kotowa Duncan Geisha",
+      "process": "Multiple processes",
+      "variety": "Geisha",
+      "altitude": "1,650–1,750 m",
+      "flavors": [
+        "Jasmine",
+        "Tropical Fruit",
+        "Passion Fruit"
+      ],
+      "sweetness": 4,
+      "acidity": 4,
+      "body": 3,
+      "source": "SCAP"
     }
   ],
   "brews": [
@@ -157,6 +586,55 @@
       "ratio": "15g : 200–230g",
       "time": "1:30–2:30",
       "roast": "全烘焙度"
+    },
+    {
+      "name": "Espresso",
+      "temp": "90–94°C",
+      "ratio": "依配方調整",
+      "time": "25–35 sec",
+      "roast": "中焙／深焙"
+    }
+  ],
+  "sources": [
+    {
+      "label": "2026 阿里山莊園咖啡精英交流賽",
+      "url": "https://admin.taiwan.net.tw/ali-nsa/NewsAli/NewsTravel?a=669&id=35796"
+    },
+    {
+      "label": "鄒築園－農業部農村發展及水土保持署",
+      "url": "https://nantou.ardswc.gov.tw/Topic/show_detail?AspxAutoDetectCookieSupport=1&id=9f80107a313b49bd888a6933c02bc01c"
+    },
+    {
+      "label": "Taiwan coffee competition / auction record",
+      "url": "https://kmweb.moa.gov.tw/redirect_files.php?id=206059"
+    },
+    {
+      "label": "SCAP Altieri Coffee Farms",
+      "url": "https://scap-panama.com/altieri-coffee-farms/"
+    },
+    {
+      "label": "SCAP Finca Lérida",
+      "url": "https://scap-panama.com/finca-lerida/"
+    },
+    {
+      "label": "SCAP Agricola Geisha",
+      "url": "https://scap-panama.com/agricola-geisha/"
+    },
+    {
+      "label": "SCAP Café Kotowa",
+      "url": "https://scap-panama.com/cafe-kotowa/"
+    },
+    {
+      "label": "Kenya AFA Coffee Yearbook",
+      "url": "https://www.afa.go.ke/wp-content/uploads/2025/06/Coffee-Yearbook-Small.pdf"
+    },
+    {
+      "label": "Café de Colombia regions",
+      "url": "https://cafedecolombia.com/regiones-cafeteras/"
+    },
+    {
+      "label": "ICAFE coffee regions",
+      "url": "https://www.icafe.cr/nuestro-cafe/el-mejor-cafe-del-mundo/"
     }
   ]
 }
