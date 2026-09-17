@@ -1,27 +1,4 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#11100e">
-  <title>Coffee Atlas</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="topbar">
-    <button class="brand" data-route="home">COFFEE ATLAS</button>
-    <button class="search-button" data-route="search" aria-label="搜尋">⌕</button>
-  </header>
-
-  <main id="app" aria-live="polite"></main>
-
-  <nav class="bottom-nav">
-    <button data-route="explore"><span>◎</span>Explore</button>
-    <button data-route="search"><span>⌕</span>Search</button>
-    <button data-route="learn"><span>☕</span>Learn</button>
-    <button data-route="roasters"><span>◇</span>Roasters</button>
-  </nav>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#11100e"><title>Coffee Atlas V1.5</title><link rel="stylesheet" href="style.css"></head><body>
+<header><button data-route="home" class="brand">COFFEE ATLAS</button><nav><button data-route="explore">EXPLORE</button><button data-route="search">SEARCH</button><button data-route="learn">LEARN</button><button data-route="roasters">ROASTERS</button></nav><div><button data-route="favorites" class="icon">♡</button><button id="open" class="icon hamburger">☰</button></div></header>
+<aside id="menu"><div class="menuhead">COFFEE ATLAS <button id="close" class="icon">×</button></div><button data-route="explore">EXPLORE<small>探索世界咖啡產地</small></button><button data-route="search">SEARCH<small>全域關鍵字搜尋</small></button><button data-route="learn">LEARN<small>咖啡小知識</small></button><button data-route="roasters">ROASTERS<small>每月精選 Roaster</small></button><button data-route="favorites">♡ MY BEANS<small>我的喜愛清單</small></button></aside><div id="shade"></div>
+<main id="app"></main><script src="app.js"></script></body></html>
