@@ -396,116 +396,350 @@ function render() {
   }
 
 
-  /* BEAN */
+/* =========================================================
+   V1.7.0 — BEAN DETAIL
+   ========================================================= */
 
-  if (parts[0] === "bean") {
-    const bean = by(
-      db.beans,
-      parts[1]
-    );
+if (parts[0] === "bean") {
+  const bean = by(
+    db.beans,
+    parts[1]
+  );
 
-    if (!bean) {
-      emptyPage("找不到這支 Coffee Bean。");
-      return;
-    }
-
-    const station = by(
-      db.stations,
-      bean.station
-    );
-
-    app.innerHTML =
-      crumb(
-        station
-          ? `
-            <button
-              data-route="station/${station.id}"
-            >
-              ${station.name}
-            </button>
-          `
-          : "Coffee Atlas"
-      ) +
-      `
-        <h1 class="title">
-          ${bean.name}
-        </h1>
-
-        <button
-          class="fav ${
-            saved(bean.id)
-              ? "saved"
-              : ""
-          }"
-          data-fav="${bean.id}"
-          aria-label="Favorite"
-        >
-          ${
-            saved(bean.id)
-              ? "♥"
-              : "♡"
-          }
-        </button>
-
-        ${tags(bean.flavors)}
-
-        <div class="stats">
-
-          ${
-            bean.altitude
-              ? `
-                <div class="stat">
-                  <small>Altitude</small>
-                  ${bean.altitude}
-                </div>
-              `
-              : ""
-          }
-
-          ${
-            bean.process
-              ? `
-                <div class="stat">
-                  <small>Process</small>
-                  ${bean.process}
-                </div>
-              `
-              : ""
-          }
-
-          ${
-            bean.variety
-              ? `
-                <div class="stat">
-                  <small>Variety</small>
-                  ${bean.variety}
-                </div>
-              `
-              : ""
-          }
-
-          ${
-            station
-              ? `
-                <button
-                  class="stat"
-                  data-route="station/${station.id}"
-                >
-                  <small>From</small>
-                  ${station.name}
-                </button>
-              `
-              : ""
-          }
-
-        </div>
-
-        ${scoreText(bean)}
-      `;
-
+  if (!bean) {
+    emptyPage("找不到這支 Coffee Bean。");
     return;
   }
 
+  /* -----------------------------------------
+     RELATIONSHIP
+     Bean → Station → Region → Country
+     ----------------------------------------- */
+
+  const station = by(
+    db.stations,
+    bean.station
+  );
+
+  const region = station
+    ? by(db.regions, station.region)
+    : null;
+
+  const country = region
+    ? by(db.countries, region.country)
+    : null;
+
+
+  /* -----------------------------------------
+     PAGE EYEBROW
+     Example: GUJI · ETHIOPIA
+     ----------------------------------------- */
+
+  const originEyebrow = [
+    region?.name,
+    country?.name
+  ]
+    .filter(Boolean)
+    .join(" · ")
+    .toUpperCase();
+
+
+  /* -----------------------------------------
+     ORIGIN PATH
+     Ethiopia → Guji → Guduba
+     ----------------------------------------- */
+
+  const originPath = [
+    country
+      ? `
+        <button
+          data-route="country/${country.id}"
+        >
+          ${country.name}
+        </button>
+      `
+      : "",
+
+    region
+      ? `
+        <button
+          data-route="region/${region.id}"
+        >
+          ${region.name}
+        </button>
+      `
+      : "",
+
+    station
+      ? `
+        <button
+          data-route="station/${station.id}"
+        >
+          ${station.name}
+        </button>
+      `
+      : ""
+  ]
+    .filter(Boolean)
+    .join(`<span class="origin-arrow">→</span>`);
+
+
+  /* -----------------------------------------
+     COFFEE PROFILE
+     Only show available data
+     ----------------------------------------- */
+
+  const coffeeProfile = [
+    bean.process
+      ? `
+        <div class="stat">
+          <small>Process</small>
+          ${bean.process}
+        </div>
+      `
+      : "",
+
+    bean.variety
+      ? `
+        <div class="stat">
+          <small>Variety</small>
+          ${bean.variety}
+        </div>
+      `
+      : "",
+
+    bean.altitude
+      ? `
+        <div class="stat">
+          <small>Altitude</small>
+          ${bean.altitude}
+        </div>
+      `
+      : ""
+  ]
+    .filter(Boolean)
+    .join("");
+
+
+  /* -----------------------------------------
+     SENSORY SCORES
+     Hide when data is unavailable
+     ----------------------------------------- */
+
+  const sensoryScores = [
+    bean.sweetness !== null &&
+    bean.sweetness !== undefined
+      ? `
+        <div class="stat">
+          <small>Sweetness</small>
+          ${bean.sweetness}/5
+        </div>
+      `
+      : "",
+
+    bean.acidity !== null &&
+    bean.acidity !== undefined
+      ? `
+        <div class="stat">
+          <small>Acidity</small>
+          ${bean.acidity}/5
+        </div>
+      `
+      : "",
+
+    bean.body !== null &&
+    bean.body !== undefined
+      ? `
+        <div class="stat">
+          <small>Body</small>
+          ${bean.body}/5
+        </div>
+      `
+      : ""
+  ]
+    .filter(Boolean)
+    .join("");
+
+
+  /* -----------------------------------------
+     SOURCE
+     ----------------------------------------- */
+
+  const sourceSection = bean.source
+    ? `
+      <div class="section">
+        SOURCE
+      </div>
+
+      <p class="intro">
+        <a
+          href="${bean.source}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View source ↗
+        </a>
+      </p>
+    `
+    : "";
+
+
+  /* -----------------------------------------
+     RENDER
+     ----------------------------------------- */
+
+  app.innerHTML = `
+
+    ${
+      originEyebrow
+        ? `
+          <div class="eyebrow">
+            ${originEyebrow}
+          </div>
+        `
+        : ""
+    }
+
+    <div class="bean-title-row">
+
+      <h1 class="title">
+        ${bean.name}
+      </h1>
+
+      <button
+        class="fav ${
+          saved(bean.id)
+            ? "saved"
+            : ""
+        }"
+        data-fav="${bean.id}"
+        aria-label="Favorite"
+      >
+        ${
+          saved(bean.id)
+            ? "♥"
+            : "♡"
+        }
+      </button>
+
+    </div>
+
+    ${
+      bean.flavors?.length
+        ? tags(bean.flavors)
+        : ""
+    }
+
+    ${
+      originPath
+        ? `
+          <div class="section">
+            ORIGIN
+          </div>
+
+          <div class="origin-path">
+            ${originPath}
+          </div>
+        `
+        : ""
+    }
+
+    ${
+      coffeeProfile
+        ? `
+          <div class="section">
+            COFFEE PROFILE
+          </div>
+
+          <div class="stats">
+            ${coffeeProfile}
+          </div>
+        `
+        : ""
+    }
+
+    ${
+      bean.flavors?.length
+        ? `
+          <div class="section">
+            CUP PROFILE
+          </div>
+
+          <p class="intro">
+            ${bean.flavors.join(" · ")}
+          </p>
+        `
+        : ""
+    }
+
+    ${
+      sensoryScores
+        ? `
+          <div class="section">
+            SENSORY
+          </div>
+
+          <div class="stats">
+            ${sensoryScores}
+          </div>
+        `
+        : ""
+    }
+
+
+    ${
+      station
+        ? `
+          <div class="section">
+            PRODUCER / STATION
+          </div>
+
+          <button
+            class="card"
+            data-route="station/${station.id}"
+          >
+
+            <div class="eyebrow">
+              ${station.type || "Origin"}
+            </div>
+
+            <h3>
+              ${station.name}
+
+              ${
+                station.zh
+                  ? `
+                    <br>
+                    <small>
+                      ${station.zh}
+                    </small>
+                  `
+                  : ""
+              }
+            </h3>
+
+            ${
+              station.intro
+                ? `
+                  <p>
+                    ${station.intro}
+                  </p>
+                `
+                : ""
+            }
+
+          </button>
+        `
+        : ""
+    }
+
+
+    ${sourceSection}
+
+  `;
+
+  return;
+}
 
   /* FAVORITES */
 
