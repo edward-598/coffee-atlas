@@ -644,6 +644,149 @@
       "body": null,
       "note": "SCAP profile lists SL28 among cultivated varieties.",
       "source": "https://scap-panama.com/aventura-coffee-estates/"
+    },
+    {
+      "id": "guduba-washed-g1",
+      "station": "guduba-wet-mill",
+      "name": "Guji Guduba Wet Mill G1",
+      "process": "Washed",
+      "variety": "Ethiopian Landraces",
+      "altitude": null,
+      "flavors": [
+        "Jasmine",
+        "Lemon",
+        "Bergamot"
+      ],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Traceable exporter offering.",
+      "source": "https://greenacrescoffee.com/"
+    },
+    {
+      "id": "haro-sorsa-natural-g1",
+      "station": "sisay-station",
+      "name": "Guji Haro Sorsa G1",
+      "process": "Natural",
+      "variety": "Ethiopian Landraces",
+      "altitude": null,
+      "flavors": [
+        "Apricot",
+        "Jasmine",
+        "Sugar Cane"
+      ],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Processed at Sisay station.",
+      "source": "https://greenacrescoffee.com/"
+    },
+    {
+      "id": "banko-gotiti-natural-g1",
+      "station": "banko-gotiti",
+      "name": "Yirgacheffe Banko Gotiti G1",
+      "process": "Natural",
+      "variety": "Ethiopian Landraces",
+      "altitude": null,
+      "flavors": [
+        "Blueberry",
+        "Strawberry",
+        "Milk Chocolate"
+      ],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Traceable exporter offering; this will later replace the legacy demo card.",
+      "source": "https://greenacrescoffee.com/"
+    },
+    {
+      "id": "kamwangi-aa",
+      "station": "kamwangi",
+      "name": "Kamwangi AA",
+      "process": "Washed",
+      "variety": "Other",
+      "altitude": "1,600–1,700 m",
+      "flavors": [],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Varieties: Ruiru 11, SL28, SL34; fully washed.",
+      "source": "https://www.sucafina.com/apac/offerings/kamwangi-aa"
+    },
+    {
+      "id": "new-irati-aa",
+      "station": "new-irati",
+      "name": "New Irati Murang'a AA",
+      "process": "Washed",
+      "variety": "Other",
+      "altitude": "1,600–1,750 m",
+      "flavors": [],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Varieties: Batian, Ruiru 11, SL28, SL34; fully washed.",
+      "source": "https://sucafina.com/apac/offerings/new-irati-murang-a-aa"
+    },
+    {
+      "id": "santa-maria-washed",
+      "station": "santa-maria-huila",
+      "name": "Santa Maria Huila",
+      "process": "Washed",
+      "variety": "Other",
+      "altitude": "1,325 m",
+      "flavors": [
+        "Sweet",
+        "Floral",
+        "Citrus",
+        "Melon"
+      ],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Varieties: Caturra, Castillo, Colombia.",
+      "source": "https://www.allycoffee.com/coffees/santa-maria/"
+    },
+    {
+      "id": "el-puente-natural",
+      "station": "el-puente",
+      "name": "El Puente Natural",
+      "process": "Natural",
+      "variety": "Other",
+      "altitude": "1,800 m",
+      "flavors": [],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Varieties: Caturra, Colombia, Castillo.",
+      "source": "https://portrait.coffee/products/colombia-el-puente-natural"
+    },
+    {
+      "id": "la-gloxinia-washed",
+      "station": "la-gloxinia",
+      "name": "Costa Rica La Gloxinia",
+      "process": "Washed",
+      "variety": "Other",
+      "altitude": "1,200–1,900 m",
+      "flavors": [],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Varieties: Caturra, Catuai; Dota micro-region.",
+      "source": "https://www.laminita.com/costa-rica"
+    },
+    {
+      "id": "la-playa-fw",
+      "station": "palmichal-micromill",
+      "name": "Costa Rica La Playa FW",
+      "process": "Washed",
+      "variety": "Other",
+      "altitude": "1,150–1,700 m",
+      "flavors": [],
+      "sweetness": null,
+      "acidity": null,
+      "body": null,
+      "note": "Varieties: Catuai, Caturra; farmers deliver to Palmichal Micromill.",
+      "source": "https://www.sucafina.com/na/offerings/la-playa-fw"
     }
   ],
   "brews": [
