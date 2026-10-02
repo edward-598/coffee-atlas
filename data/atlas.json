@@ -145,6 +145,29 @@
         "Sweet",
         "Balanced"
       ]
+    },
+    {
+      "id": "kirinyaga",
+      "country": "kenya",
+      "name": "Kirinyaga",
+      "zh": "基里尼亞加",
+      "altitude": "Central Kenya highlands",
+      "profile": [
+        "Bright acidity",
+        "Fruit",
+        "Structured"
+      ]
+    },
+    {
+      "id": "muranga",
+      "country": "kenya",
+      "name": "Murang'a",
+      "zh": "穆蘭加",
+      "altitude": "1,600–1,750 m in New Irati lot",
+      "profile": [
+        "Bright acidity",
+        "Fruit"
+      ]
     }
   ],
   "stations": [
@@ -220,6 +243,307 @@
         "Typica"
       ],
       "intro": "Boquete coffee estate."
+    },
+    {
+      "id": "dou-yu-xiang",
+      "region": "alishan",
+      "name": "Dou Yu Xiang Geisha Estate",
+      "zh": "豆御香藝伎莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "Geisha"
+      ],
+      "intro": "2026 Taiwan competition estate."
+    },
+    {
+      "id": "hua-xi-tian",
+      "region": "alishan",
+      "name": "Hua Xi Tian Coffee Estate",
+      "zh": "花囍田咖啡莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "SL34"
+      ],
+      "intro": "2026 Taiwan competition estate."
+    },
+    {
+      "id": "wei-wo-deng",
+      "region": "alishan",
+      "name": "Wei Wo Deng Estate",
+      "zh": "為我等莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "Geisha"
+      ],
+      "intro": "2026 Taiwan competition estate."
+    },
+    {
+      "id": "song-yue",
+      "region": "alishan",
+      "name": "Song Yue Coffee Estate",
+      "zh": "嵩岳咖啡莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "Geisha"
+      ],
+      "intro": "2026 Taiwan competition estate."
+    },
+    {
+      "id": "qi-cai-liu-li",
+      "region": "alishan",
+      "name": "Qi Cai Liu Li Coffee Estate",
+      "zh": "七彩琉璃咖啡莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "SL34"
+      ],
+      "intro": "2026 Taiwan competition estate."
+    },
+    {
+      "id": "hu-po-she",
+      "region": "alishan",
+      "name": "Hu Po She Coffee Estate",
+      "zh": "琥珀社咖啡莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "SL34"
+      ],
+      "intro": "2026 Taiwan competition estate."
+    },
+    {
+      "id": "hacienda-esmeralda",
+      "region": "boquete",
+      "name": "Hacienda La Esmeralda",
+      "zh": "翡翠莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "Geisha"
+      ],
+      "intro": "Family-owned Boquete specialty coffee estate; Jaramillo is associated with Geisha's 2004 Best of Panama breakthrough."
+    },
+    {
+      "id": "elida-estate",
+      "region": "boquete",
+      "name": "Elida Estate",
+      "zh": "Elida 莊園",
+      "type": "Coffee Estate",
+      "altitude": "1,700–1,950 m",
+      "profile": [
+        "Geisha",
+        "Traditional varieties"
+      ],
+      "intro": "Lamastus Family Estates farm in Alto Quiel, Boquete."
+    },
+    {
+      "id": "abu-coffee",
+      "region": "boquete",
+      "name": "ABU Coffee / Hacienda Cañas Verdes",
+      "zh": "ABU Coffee／Cañas Verdes 莊園",
+      "type": "Coffee Farm",
+      "altitude": "1,600 m",
+      "profile": [
+        "Geisha"
+      ],
+      "intro": "Boutique farm on the slopes of Volcán Barú."
+    },
+    {
+      "id": "finca-irma",
+      "region": "boquete",
+      "name": "Finca Irma",
+      "zh": "Irma 莊園",
+      "type": "Coffee Farm",
+      "altitude": "1,450–1,525 m",
+      "profile": [
+        "Mundo Novo",
+        "Catuai",
+        "Bourbon",
+        "Geisha",
+        "Caturra"
+      ],
+      "intro": "Family-owned farm in Volcancito, Boquete."
+    },
+    {
+      "id": "maya-coffee",
+      "region": "boquete",
+      "name": "Maya Coffee Estate",
+      "zh": "Maya 咖啡莊園",
+      "type": "Coffee Estate",
+      "altitude": "1,490–1,650 m",
+      "profile": [
+        "Geisha",
+        "Pacamara"
+      ],
+      "intro": "Estate in Alto Jaramillo; reported as about 90% Geisha and 10% Pacamara."
+    },
+    {
+      "id": "aventura",
+      "region": "boquete",
+      "name": "Aventura Coffee Estates",
+      "zh": "Aventura 咖啡莊園",
+      "type": "Coffee Estate",
+      "altitude": null,
+      "profile": [
+        "Geisha",
+        "Catuai SH3",
+        "Pacamara",
+        "Bourbon",
+        "SL28"
+      ],
+      "intro": "Coffee estate in Jaramillo, Boquete."
+    },
+    {
+      "id": "boledu-konga",
+      "region": "yirgacheffe",
+      "name": "Boledu Konga Washing Station",
+      "zh": "Boledu Konga 水洗站",
+      "type": "Washing Station",
+      "altitude": null,
+      "profile": [
+        "Traceable Yirgacheffe"
+      ],
+      "intro": "Boledu operates washing stations in Konga, Gedeb and Aricha."
+    },
+    {
+      "id": "boledu-gedeb",
+      "region": "yirgacheffe",
+      "name": "Boledu Gedeb Washing Station",
+      "zh": "Boledu Gedeb 水洗站",
+      "type": "Washing Station",
+      "altitude": null,
+      "profile": [
+        "Traceable Yirgacheffe"
+      ],
+      "intro": "Boledu operates washing stations in Konga, Gedeb and Aricha."
+    },
+    {
+      "id": "guduba-wet-mill",
+      "region": "guji",
+      "name": "Guduba Wet Mill",
+      "zh": "Guduba 水洗站",
+      "type": "Washing Station",
+      "altitude": null,
+      "profile": [
+        "Jasmine",
+        "Lemon",
+        "Bergamot"
+      ],
+      "intro": "Green Acres lists Guduba Wet Mill in Hambella, Guji."
+    },
+    {
+      "id": "sisay-station",
+      "region": "guji",
+      "name": "Sisay Washing Station / Haro Sorsa",
+      "zh": "Sisay 水洗站／Haro Sorsa",
+      "type": "Washing Station",
+      "altitude": null,
+      "profile": [
+        "Apricot",
+        "Jasmine",
+        "Sugar Cane"
+      ],
+      "intro": "Green Acres lists a Haro Sorsa lot processed at Sisay station."
+    },
+    {
+      "id": "kamwangi",
+      "region": "kirinyaga",
+      "name": "Kamwangi Factory",
+      "zh": "Kamwangi 處理廠",
+      "type": "Washing Station",
+      "altitude": "1,600–1,700 m",
+      "profile": [
+        "AA",
+        "Fully Washed"
+      ],
+      "intro": "Part of New Ngariama FCS in Kirinyaga County."
+    },
+    {
+      "id": "new-irati",
+      "region": "muranga",
+      "name": "New Irati Factory",
+      "zh": "New Irati 處理廠",
+      "type": "Washing Station",
+      "altitude": "1,600–1,750 m",
+      "profile": [
+        "AA",
+        "Fully Washed"
+      ],
+      "intro": "Operated by Kangiri Farmers' Cooperative Society."
+    },
+    {
+      "id": "santa-maria-huila",
+      "region": "huila",
+      "name": "Santa Maria Producers",
+      "zh": "Santa Maria 生產者群",
+      "type": "Producer Group",
+      "altitude": "1,325 m",
+      "profile": [
+        "Sweet",
+        "Floral",
+        "Clean",
+        "Citrus",
+        "Melon"
+      ],
+      "intro": "Coffee from El Lote, El Sinai and Los Nogales farms in Huila."
+    },
+    {
+      "id": "el-puente",
+      "region": "huila",
+      "name": "El Puente Processing Facility",
+      "zh": "El Puente 處理中心",
+      "type": "Processing Facility",
+      "altitude": "1,800 m",
+      "profile": [
+        "Natural"
+      ],
+      "intro": "Facility in Palestina, Huila serving local smallholders."
+    },
+    {
+      "id": "la-gloxinia",
+      "region": "tarrazu",
+      "name": "La Gloxinia / Santa Maria de Dota",
+      "zh": "La Gloxinia／Santa Maria de Dota",
+      "type": "Producer Group",
+      "altitude": "1,200–1,900 m",
+      "profile": [
+        "Caturra",
+        "Catuai",
+        "Washed"
+      ],
+      "intro": "Dota micro-region coffee represented by Hacienda La Minita."
+    },
+    {
+      "id": "palmichal-micromill",
+      "region": "tarrazu",
+      "name": "Palmichal Micromill",
+      "zh": "Palmichal 微型處理廠",
+      "type": "Micromill",
+      "altitude": "1,150–1,700 m",
+      "profile": [
+        "Catuai",
+        "Caturra",
+        "Fully Washed"
+      ],
+      "intro": "Processes coffee from farmers supplying the Tarrazu La Playa lot."
+    },
+    {
+      "id": "agricola-geisha",
+      "region": "boquete",
+      "name": "Agricola Geisha",
+      "zh": "Agricola Geisha",
+      "type": "Coffee Farm",
+      "altitude": "1,350–1,900+ m",
+      "profile": [
+        "Geisha",
+        "Pacamara"
+      ],
+      "intro": "Farm node for the existing Agricola Geisha and Pacamara bean records."
     }
   ],
   "beans": [
