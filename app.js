@@ -573,6 +573,7 @@ if (parts[0] === "bean") {
 
       <p class="intro">
         <a
+          class="source-link"
           href="${bean.source}"
           target="_blank"
           rel="noopener noreferrer"
