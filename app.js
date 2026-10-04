@@ -1,3 +1,59 @@
+/* =========================================================
+   V1.8.2 — INTERACTIVE GLOBE MODULE
+   ========================================================= */
+
+let destroyCoffeeGlobe = null;
+
+async function mountCoffeeGlobe() {
+
+  const container =
+    document.querySelector("#coffeeGlobe");
+
+  if (!container) return;
+
+  try {
+
+    const { initCoffeeGlobe } =
+      await import("./globe.js");
+
+    /*
+      Route may have changed while
+      the module was loading.
+    */
+    if (
+      !document.querySelector(
+        "#coffeeGlobe"
+      )
+    ) {
+      return;
+    }
+
+    destroyCoffeeGlobe =
+      initCoffeeGlobe();
+
+  } catch (error) {
+
+    console.error(
+      "Coffee Globe failed to load:",
+      error
+    );
+
+  }
+}
+
+
+function unmountCoffeeGlobe() {
+
+  if (
+    typeof destroyCoffeeGlobe ===
+    "function"
+  ) {
+    destroyCoffeeGlobe();
+  }
+
+  destroyCoffeeGlobe = null;
+}
+
 let db;
 
 const app = document.querySelector("#app");
@@ -106,6 +162,9 @@ function scoreText(bean) {
 
 function render() {
   if (!db) return;
+
+  /* V1.8.2 — clean previous globe */
+  unmountCoffeeGlobe();
 
   const route = location.hash.slice(1) || "home";
   const parts = route.split("/");
