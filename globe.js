@@ -109,7 +109,7 @@ const gridMaterial =
   new THREE.LineBasicMaterial({
     color: 0xd5a96c,
     transparent: true,
-    opacity: 0.35
+    opacity: 0.16
   });
 
 
