@@ -326,7 +326,10 @@ function render() {
 
     return;
   }
-  /* COUNTRY */
+
+/* =========================================================
+     V1.8.1 — COUNTRY EXPERIENCE
+     ========================================================= */
 
   if (parts[0] === "country") {
     const country = by(
@@ -340,55 +343,196 @@ function render() {
     }
 
     const regions = (db.regions || []).filter(
-      (x) => x.country === country.id
+      (region) => region.country === country.id
     );
 
-    app.innerHTML =
-      crumb(`
+    const regionIds = regions.map(
+      (region) => region.id
+    );
+
+    const countryStations = (db.stations || []).filter(
+      (station) =>
+        regionIds.includes(station.region)
+    );
+
+    const stationIds = countryStations.map(
+      (station) => station.id
+    );
+
+    const countryBeans = (db.beans || []).filter(
+      (bean) =>
+        stationIds.includes(bean.station)
+    );
+
+    const countryProfile = Array.isArray(country.profile)
+      ? country.profile.filter(Boolean)
+      : country.profile
+        ? [country.profile]
+        : [];
+
+
+    const regionCards = regions
+      .map((region) => {
+
+        const stations = (db.stations || []).filter(
+          (station) =>
+            station.region === region.id
+        );
+
+        const stationIds = stations.map(
+          (station) => station.id
+        );
+
+        const beans = (db.beans || []).filter(
+          (bean) =>
+            stationIds.includes(bean.station)
+        );
+
+        const profile = Array.isArray(region.profile)
+          ? region.profile
+              .filter(Boolean)
+              .join(" · ")
+          : region.profile || "";
+
+        return `
+          <button
+            class="atlas-node-card"
+            data-route="region/${region.id}"
+          >
+
+            <div class="atlas-node-card__top">
+              <span class="eyebrow">
+                REGION
+              </span>
+
+              <span class="atlas-node-card__count">
+                ${stations.length} ORIGINS ·
+                ${beans.length} BEANS
+              </span>
+            </div>
+
+            <h2>
+              ${region.name}
+            </h2>
+
+            ${
+              region.zh
+                ? `
+                    <div class="atlas-node-card__zh">
+                      ${region.zh}
+                    </div>
+                  `
+                : ""
+            }
+
+            ${
+              region.altitude
+                ? `
+                    <div class="atlas-node-card__meta">
+                      ${region.altitude}
+                    </div>
+                  `
+                : ""
+            }
+
+            ${
+              profile
+                ? `
+                    <p>
+                      ${profile}
+                    </p>
+                  `
+                : ""
+            }
+
+            <div class="atlas-node-card__footer">
+              EXPLORE REGION
+              <span>→</span>
+            </div>
+
+          </button>
+        `;
+      })
+      .join("");
+
+
+    app.innerHTML = `
+
+      ${crumb(`
         <button data-route="explore">
           WORLD
         </button>
-        ›
+        <span>›</span>
         ${country.name}
-      `) +
-      `
+      `)}
+
+      <section class="atlas-page-hero">
+
+        <div class="eyebrow">
+          COFFEE ORIGIN
+        </div>
+
         <h1 class="title">
           ${country.name}
         </h1>
 
-        <h2>
-          ${country.zh || ""}
-        </h2>
+        ${
+          country.zh
+            ? `
+                <div class="atlas-page-zh">
+                  ${country.zh}
+                </div>
+              `
+            : ""
+        }
 
-        ${tags(country.profile)}
+        ${
+          countryProfile.length
+            ? tags(countryProfile)
+            : ""
+        }
 
-        <div class="section">
-          REGIONS
+
+        <div class="atlas-summary">
+
+          <div>
+            <strong>${regions.length}</strong>
+            <span>REGIONS</span>
+          </div>
+
+          <div>
+            <strong>${countryStations.length}</strong>
+            <span>ORIGINS</span>
+          </div>
+
+          <div>
+            <strong>${countryBeans.length}</strong>
+            <span>BEANS</span>
+          </div>
+
         </div>
 
-        <div class="grid">
-          ${
-            regions
-              .map((x) =>
-                card(
-                  x,
-                  x.altitude || "Region",
-                  `region/${x.id}`
-                )
-              )
-              .join("") ||
-            `
-              <div class="empty">
-                後續擴充
-              </div>
-            `
-          }
-        </div>
-      `;
+      </section>
+
+
+      <div class="section">
+        EXPLORE REGIONS
+      </div>
+
+      <div class="atlas-node-grid">
+        ${
+          regionCards ||
+          `
+            <div class="empty">
+              尚未建立 Region。
+            </div>
+          `
+        }
+      </div>
+    `;
 
     return;
-  }
-
+  }  
 
   /* REGION */
 
