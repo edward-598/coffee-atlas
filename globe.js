@@ -258,6 +258,145 @@ for (
 
 
 scene.add(gridGroup);
+   /* =========================================================
+   V1.8.2c — WORLD COASTLINES
+   ========================================================= */
+
+const continentGroup =
+  new THREE.Group();
+
+scene.add(continentGroup);
+
+
+const coastlineMaterial =
+  new THREE.LineBasicMaterial({
+    color: 0xd5a96c,
+    transparent: true,
+    opacity: 0.72
+  });
+
+
+function drawPolygonCoordinates(
+  coordinates
+) {
+
+  coordinates.forEach(
+    (ring) => {
+
+      const points =
+        ring.map(
+          ([longitude, latitude]) =>
+            latLngToVector3(
+              latitude,
+              longitude,
+              1.395
+            )
+        );
+
+      if (points.length < 2) {
+        return;
+      }
+
+      const geometry =
+        new THREE.BufferGeometry()
+          .setFromPoints(points);
+
+      const coastline =
+        new THREE.Line(
+          geometry,
+          coastlineMaterial
+        );
+
+      continentGroup.add(
+        coastline
+      );
+    }
+  );
+}
+
+function drawGeometry(
+  geometry
+) {
+
+  if (!geometry) return;
+
+
+  if (
+    geometry.type ===
+    "Polygon"
+  ) {
+
+    drawPolygonCoordinates(
+      geometry.coordinates
+    );
+
+  }
+
+
+  if (
+    geometry.type ===
+    "MultiPolygon"
+  ) {
+
+    geometry.coordinates.forEach(
+      (polygon) => {
+
+        drawPolygonCoordinates(
+          polygon
+        );
+
+      }
+    );
+
+  }
+}
+
+   /* -----------------------------------------
+   LOAD WORLD MAP
+   ----------------------------------------- */
+
+fetch(
+  "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"
+)
+  .then(
+    (response) => {
+
+      if (!response.ok) {
+        throw new Error(
+          "World map failed to load"
+        );
+      }
+
+      return response.json();
+    }
+  )
+
+  .then(
+    (worldData) => {
+
+      worldData.features.forEach(
+        (feature) => {
+
+          drawGeometry(
+            feature.geometry
+          );
+
+        }
+      );
+
+    }
+  )
+
+  .catch(
+    (error) => {
+
+      console.error(
+        "Coffee Atlas world map:",
+        error
+      );
+
+    }
+  );
 
   /* -----------------------------------------
      ATMOSPHERE / OUTLINE
