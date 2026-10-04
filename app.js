@@ -385,9 +385,11 @@ function render() {
           ${countryCards}
         </div>
 
-      </section>
+     </section>
 
     `;
+
+    mountCoffeeGlobe();
 
     return;
   }
