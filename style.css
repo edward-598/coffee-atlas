@@ -706,3 +706,201 @@
   }
 
 }
+
+/* =========================================================
+   V1.8.1 — ORIGIN / STATION EXPERIENCE
+   ========================================================= */
+
+
+/* ---------- ORIGIN HERO ---------- */
+
+.origin-hero {
+  padding-bottom: 14px;
+}
+
+.origin-altitude {
+  display: inline-block;
+
+  margin-top: 10px;
+  padding: 7px 11px;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+
+.origin-intro {
+  max-width: 620px;
+  margin-top: 20px;
+
+  line-height: 1.75;
+}
+
+
+/* ---------- SINGLE SUMMARY ---------- */
+
+.atlas-summary--single {
+  grid-template-columns: 1fr;
+}
+
+.atlas-summary--single > div {
+  border-left: 0 !important;
+}
+
+
+/* ---------- BEAN GRID ---------- */
+
+.origin-bean-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+
+/* ---------- BEAN CARD ---------- */
+
+.origin-bean-card {
+  width: 100%;
+  padding: 21px;
+
+  text-align: left;
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #211e19,
+      #181613
+    );
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.origin-bean-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #6a563c;
+
+  background:
+    linear-gradient(
+      145deg,
+      #252019,
+      #191713
+    );
+}
+
+
+.origin-bean-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+
+.origin-bean-card__meta {
+  max-width: 65%;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  line-height: 1.5;
+
+  text-align: right;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.origin-bean-card h2 {
+  margin: 17px 0 5px;
+
+  font: 26px Georgia, serif;
+  font-weight: normal;
+
+  line-height: 1.2;
+}
+
+
+.origin-bean-card__altitude {
+  margin-top: 9px;
+
+  color: var(--muted);
+  font-size: 11px;
+}
+
+
+.origin-bean-card__flavors {
+  margin-top: 17px;
+}
+
+
+.origin-bean-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 18px;
+  padding-top: 13px;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--gold);
+
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+.origin-bean-card__footer span {
+  font-size: 17px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+.origin-bean-card:hover
+.origin-bean-card__footer span {
+  transform: translateX(4px);
+}
+
+
+/* ---------- DESKTOP ---------- */
+
+@media (min-width: 760px) {
+
+  .origin-bean-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 520px) {
+
+  .origin-bean-card {
+    padding: 19px;
+  }
+
+  .origin-bean-card h2 {
+    font-size: 24px;
+  }
+
+}
