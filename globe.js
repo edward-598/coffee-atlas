@@ -44,6 +44,49 @@ function latLngToVector3(
 }
 
 /* =========================================================
+   V1.8.2d — COFFEE ORIGIN COORDINATES
+   UI metadata for globe markers
+   ========================================================= */
+
+const coffeeOriginCoordinates = {
+  taiwan: {
+    name: "Taiwan",
+    lat: 23.7,
+    lng: 121.0
+  },
+
+  ethiopia: {
+    name: "Ethiopia",
+    lat: 9.1,
+    lng: 40.5
+  },
+
+  kenya: {
+    name: "Kenya",
+    lat: 0.2,
+    lng: 37.9
+  },
+
+  panama: {
+    name: "Panama",
+    lat: 8.5,
+    lng: -80.8
+  },
+
+  colombia: {
+    name: "Colombia",
+    lat: 4.6,
+    lng: -74.1
+  },
+
+  "costa-rica": {
+    name: "Costa Rica",
+    lat: 9.9,
+    lng: -84.2
+  }
+};
+
+/* =========================================================
    INIT
    ========================================================= */
 
@@ -398,6 +441,112 @@ fetch(
     }
   );
 
+/* =========================================================
+   V1.8.2d — COFFEE ORIGIN MARKERS
+   ========================================================= */
+
+const markerGroup =
+  new THREE.Group();
+
+scene.add(markerGroup);
+
+
+const markerGeometry =
+  new THREE.SphereGeometry(
+    0.035,
+    20,
+    20
+  );
+
+
+const markerMaterial =
+  new THREE.MeshBasicMaterial({
+    color: 0xf0bd73
+  });
+
+
+Object.entries(
+  coffeeOriginCoordinates
+).forEach(
+  ([countryId, origin]) => {
+
+    const position =
+      latLngToVector3(
+        origin.lat,
+        origin.lng,
+        1.43
+      );
+
+
+    const marker =
+      new THREE.Mesh(
+        markerGeometry,
+        markerMaterial
+      );
+
+
+    marker.position.copy(
+      position
+    );
+
+
+    marker.userData = {
+      countryId,
+      name: origin.name
+    };
+
+
+    markerGroup.add(
+      marker
+    );
+
+  }
+);
+
+/* -----------------------------------------
+MARKER GLOW
+----------------------------------------- */
+
+const glowGeometry =
+  new THREE.SphereGeometry(
+    0.065,
+    20,
+    20
+  );
+
+
+const glowMaterial =
+  new THREE.MeshBasicMaterial({
+    color: 0xd5a96c,
+    transparent: true,
+    opacity: 0.18
+  });
+
+
+const originMarkers =
+  [...markerGroup.children];
+
+
+originMarkers.forEach(
+  (marker) => {
+
+    const glow =
+      new THREE.Mesh(
+        glowGeometry,
+        glowMaterial
+      );
+
+    glow.position.copy(
+      marker.position
+    );
+
+    markerGroup.add(
+      glow
+    );
+
+  }
+);
+   
   /* -----------------------------------------
      ATMOSPHERE / OUTLINE
      ----------------------------------------- */
