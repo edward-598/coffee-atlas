@@ -8,6 +8,40 @@ import * as THREE from "three";
 import { OrbitControls } from
   "three/addons/controls/OrbitControls.js";
 
+/* =========================================================
+   GEO HELPERS
+   Longitude / Latitude → 3D Sphere
+   ========================================================= */
+
+function latLngToVector3(
+  latitude,
+  longitude,
+  radius
+) {
+
+  const lat =
+    THREE.MathUtils.degToRad(
+      latitude
+    );
+
+  const lon =
+    THREE.MathUtils.degToRad(
+      longitude
+    );
+
+  return new THREE.Vector3(
+    radius *
+      Math.cos(lat) *
+      Math.sin(lon),
+
+    radius *
+      Math.sin(lat),
+
+    radius *
+      Math.cos(lat) *
+      Math.cos(lon)
+  );
+}
 
 /* =========================================================
    INIT
