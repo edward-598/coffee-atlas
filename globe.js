@@ -109,7 +109,7 @@ const gridMaterial =
   new THREE.LineBasicMaterial({
     color: 0xd5a96c,
     transparent: true,
-    opacity: 0.12
+    opacity: 0.35
   });
 
 
@@ -127,10 +127,10 @@ for (
     );
 
   const radius =
-    1.355 * Math.cos(lat);
+    1.38 * Math.cos(lat);
 
   const y =
-    1.355 * Math.sin(lat);
+    1.38 * Math.sin(lat);
 
   const points = [];
 
@@ -195,10 +195,10 @@ for (
       );
 
     const radius =
-      1.355 * Math.cos(lat);
+      1.38 * Math.cos(lat);
 
     const y =
-      1.355 * Math.sin(lat);
+      1.38 * Math.sin(lat);
 
     points.push(
       new THREE.Vector3(
