@@ -338,8 +338,14 @@ function render() {
         </p>
 
         <div class="explore-globe-wrap">
-          <div class="globe"></div>
-        </div>
+
+  <div
+    id="coffeeGlobe"
+    class="coffee-globe"
+    aria-label="Interactive coffee origin globe"
+  ></div>
+
+</div>
 
 
         <div class="explore-stats">
@@ -1867,5 +1873,9 @@ fetch("data/atlas.json")
         資料載入失敗，
         請確認 data/atlas.json 已正確上傳。
       </div>
-    `;
-  });
+ `;
+
+    mountCoffeeGlobe();
+
+    return;
+  }
