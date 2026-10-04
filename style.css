@@ -468,3 +468,241 @@
   }
 
 }
+
+/* =========================================================
+   V1.8.1 — COUNTRY / REGION EXPERIENCE
+   ========================================================= */
+
+.atlas-page-hero {
+  padding: 18px 0 12px;
+}
+
+.atlas-page-hero .title {
+  margin-bottom: 4px;
+}
+
+.atlas-page-zh {
+  color: var(--muted);
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.atlas-region-altitude {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+/* ---------- SUMMARY ---------- */
+
+.atlas-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: 30px;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.atlas-summary--two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.atlas-summary > div {
+  padding: 17px 8px;
+  text-align: center;
+}
+
+.atlas-summary > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.atlas-summary strong {
+  display: block;
+  font: 25px Georgia, serif;
+  color: var(--ink);
+}
+
+.atlas-summary span {
+  display: block;
+  margin-top: 5px;
+
+  color: var(--gold);
+
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+
+/* ---------- NODE GRID ---------- */
+
+.atlas-node-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+
+/* ---------- REGION / ORIGIN CARD ---------- */
+
+.atlas-node-card {
+  width: 100%;
+  padding: 21px;
+
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #211e19,
+      #181613
+    );
+
+  color: var(--ink);
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.atlas-node-card:hover {
+  transform: translateY(-2px);
+  border-color: #6a563c;
+
+  background:
+    linear-gradient(
+      145deg,
+      #252019,
+      #191713
+    );
+}
+
+
+.atlas-node-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+
+.atlas-node-card__count {
+  color: var(--muted);
+
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+
+.atlas-node-card h2 {
+  margin: 17px 0 3px;
+
+  font: 27px Georgia, serif;
+  font-weight: normal;
+}
+
+
+.atlas-node-card__zh {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+.atlas-node-card__meta {
+  display: inline-block;
+
+  margin-top: 14px;
+  padding: 6px 9px;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--muted);
+  font-size: 11px;
+}
+
+
+.atlas-node-card p {
+  margin: 16px 0;
+
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+
+.atlas-node-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 17px;
+  padding-top: 13px;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--gold);
+
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+
+.atlas-node-card__footer span {
+  font-size: 17px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.atlas-node-card:hover
+.atlas-node-card__footer span {
+  transform: translateX(4px);
+}
+
+
+/* ---------- DESKTOP ---------- */
+
+@media (min-width: 760px) {
+
+  .atlas-node-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 520px) {
+
+  .atlas-page-hero {
+    padding-top: 10px;
+  }
+
+  .atlas-summary strong {
+    font-size: 21px;
+  }
+
+  .atlas-summary span {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .atlas-node-card {
+    padding: 19px;
+  }
+
+  .atlas-node-card h2 {
+    font-size: 25px;
+  }
+
+}
