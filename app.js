@@ -138,37 +138,194 @@ function render() {
   }
 
 
-  /* EXPLORE */
+/* =========================================================
+     V1.8.0 — EXPLORE LANDING
+     ========================================================= */
 
   if (route === "explore") {
-    app.innerHTML = `
-      <div class="eyebrow">
-        Explore the world
-      </div>
 
-      <h1 class="title">
-        Coffee Origins
-      </h1>
+    /* -----------------------------------------
+       LIVE DATABASE STATS
+       ----------------------------------------- */
 
-      <div class="globe"></div>
+    const countryCount = (db.countries || []).length;
+    const regionCount = (db.regions || []).length;
+    const originCount = (db.stations || []).length;
+    const beanCount = (db.beans || []).length;
 
-      <div class="grid">
-        ${(db.countries || [])
-          .map((x) =>
-            card(
-              x,
-              "Origin",
-              `country/${x.id}`
-            )
+
+    /* -----------------------------------------
+       COUNTRY DATA
+       Calculate bean count from relationships:
+       Country → Region → Station → Bean
+       ----------------------------------------- */
+
+    const countriesWithStats = (db.countries || [])
+      .map((country) => {
+
+        const regionIds = (db.regions || [])
+          .filter((region) =>
+            region.country === country.id
           )
-          .join("")}
-      </div>
+          .map((region) => region.id);
+
+        const stationIds = (db.stations || [])
+          .filter((station) =>
+            regionIds.includes(station.region)
+          )
+          .map((station) => station.id);
+
+        const countryBeans = (db.beans || [])
+          .filter((bean) =>
+            stationIds.includes(bean.station)
+          );
+
+        return {
+          ...country,
+          beanCount: countryBeans.length
+        };
+      })
+      .sort((a, b) =>
+        b.beanCount - a.beanCount
+      );
+
+
+    /* -----------------------------------------
+       COUNTRY CARDS
+       ----------------------------------------- */
+
+    const countryCards = countriesWithStats
+      .map((country) => {
+
+        const profile = Array.isArray(country.profile)
+          ? country.profile
+              .filter(Boolean)
+              .slice(0, 3)
+              .join(" · ")
+          : country.profile || "";
+
+        return `
+          <button
+            class="explore-country-card"
+            data-route="country/${country.id}"
+          >
+
+            <div class="explore-country-card__top">
+
+              <span class="eyebrow">
+                ORIGIN
+              </span>
+
+              <span class="explore-country-card__count">
+                ${country.beanCount}
+                ${country.beanCount === 1 ? "BEAN" : "BEANS"}
+              </span>
+
+            </div>
+
+            <h2>
+              ${country.name}
+            </h2>
+
+            ${
+              country.zh
+                ? `
+                    <div class="explore-country-card__zh">
+                      ${country.zh}
+                    </div>
+                  `
+                : ""
+            }
+
+            ${
+              profile
+                ? `
+                    <p>
+                      ${profile}
+                    </p>
+                  `
+                : ""
+            }
+
+            <div class="explore-country-card__arrow">
+              EXPLORE
+              <span>→</span>
+            </div>
+
+          </button>
+        `;
+      })
+      .join("");
+
+
+    /* -----------------------------------------
+       RENDER
+       ----------------------------------------- */
+
+    app.innerHTML = `
+
+      <section class="explore-hero">
+
+        <div class="eyebrow">
+          EXPLORE THE WORLD
+        </div>
+
+        <h1 class="title">
+          Coffee Origins
+        </h1>
+
+        <p class="intro">
+          Discover coffee from origin to cup.
+        </p>
+
+        <div class="explore-globe-wrap">
+          <div class="globe"></div>
+        </div>
+
+
+        <div class="explore-stats">
+
+          <div>
+            <strong>${countryCount}</strong>
+            <span>COUNTRIES</span>
+          </div>
+
+          <div>
+            <strong>${regionCount}</strong>
+            <span>REGIONS</span>
+          </div>
+
+          <div>
+            <strong>${originCount}</strong>
+            <span>ORIGINS</span>
+          </div>
+
+          <div>
+            <strong>${beanCount}</strong>
+            <span>BEANS</span>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="explore-origins">
+
+        <div class="section">
+          COFFEE ORIGINS
+        </div>
+
+        <div class="explore-country-grid">
+          ${countryCards}
+        </div>
+
+      </section>
+
     `;
 
     return;
   }
-
-
   /* COUNTRY */
 
   if (parts[0] === "country") {
