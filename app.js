@@ -766,9 +766,12 @@ function render() {
     return;
   } 
 
-  /* STATION / FARM */
+  /* =========================================================
+     V1.8.1 — ORIGIN / STATION EXPERIENCE
+     ========================================================= */
 
   if (parts[0] === "station") {
+
     const station = by(
       db.stations,
       parts[1]
@@ -779,68 +782,255 @@ function render() {
       return;
     }
 
+
+    /* -----------------------------------------
+       RELATIONSHIPS
+       ----------------------------------------- */
+
+    const region = by(
+      db.regions,
+      station.region
+    );
+
+    const country = region
+      ? by(db.countries, region.country)
+      : null;
+
     const beans = (db.beans || []).filter(
       (bean) =>
         bean.station === station.id
     );
 
-    app.innerHTML =
-      crumb(station.name) +
-      `
+    const profile =
+      Array.isArray(station.profile)
+        ? station.profile.filter(Boolean)
+        : station.profile
+          ? [station.profile]
+          : [];
+
+
+    /* -----------------------------------------
+       BEAN CARDS
+       ----------------------------------------- */
+
+    const beanCards = beans
+      .map((bean) => {
+
+        const beanMeta = [
+          bean.process,
+          bean.variety
+        ]
+          .filter(Boolean)
+          .join(" · ");
+
+        const flavors =
+          Array.isArray(bean.flavors)
+            ? bean.flavors.filter(Boolean)
+            : [];
+
+        return `
+          <button
+            class="origin-bean-card"
+            data-route="bean/${bean.id}"
+          >
+
+            <div class="origin-bean-card__top">
+
+              <span class="eyebrow">
+                COFFEE / LOT
+              </span>
+
+              ${
+                beanMeta
+                  ? `
+                    <span class="origin-bean-card__meta">
+                      ${beanMeta}
+                    </span>
+                  `
+                  : ""
+              }
+
+            </div>
+
+
+            <h2>
+              ${bean.name}
+            </h2>
+
+
+            ${
+              bean.altitude
+                ? `
+                    <div class="origin-bean-card__altitude">
+                      ${bean.altitude}
+                    </div>
+                  `
+                : ""
+            }
+
+
+            ${
+              flavors.length
+                ? `
+                    <div class="origin-bean-card__flavors">
+                      ${tags(flavors)}
+                    </div>
+                  `
+                : ""
+            }
+
+
+            <div class="origin-bean-card__footer">
+              VIEW COFFEE
+              <span>→</span>
+            </div>
+
+          </button>
+        `;
+      })
+      .join("");
+
+
+    /* -----------------------------------------
+       RENDER
+       ----------------------------------------- */
+
+    app.innerHTML = `
+
+      ${crumb(`
+
+        <button data-route="explore">
+          WORLD
+        </button>
+
+        ${
+          country
+            ? `
+                <span>›</span>
+
+                <button
+                  data-route="country/${country.id}"
+                >
+                  ${country.name}
+                </button>
+              `
+            : ""
+        }
+
+        ${
+          region
+            ? `
+                <span>›</span>
+
+                <button
+                  data-route="region/${region.id}"
+                >
+                  ${region.name}
+                </button>
+              `
+            : ""
+        }
+
+        <span>›</span>
+
+        ${station.name}
+
+      `)}
+
+
+      <section class="atlas-page-hero origin-hero">
+
+        <div class="eyebrow">
+          ${station.type || "COFFEE ORIGIN"}
+        </div>
+
         <h1 class="title">
           ${station.name}
         </h1>
 
-        <h2>
-          ${station.zh || ""}
-        </h2>
+        ${
+          station.zh
+            ? `
+                <div class="atlas-page-zh">
+                  ${station.zh}
+                </div>
+              `
+            : ""
+        }
+
+
+        ${
+          station.altitude
+            ? `
+                <div class="origin-altitude">
+                  ${station.altitude}
+                </div>
+              `
+            : ""
+        }
+
 
         ${
           station.intro
             ? `
-              <p class="intro">
-                ${station.intro}
-              </p>
-            `
+                <p class="intro origin-intro">
+                  ${station.intro}
+                </p>
+              `
             : ""
         }
 
-        ${tags(station.profile)}
 
-        <div class="section">
-          BEANS FROM HERE
-        </div>
+        ${
+          profile.length
+            ? `
+                <div class="section">
+                  TYPICAL PROFILE
+                </div>
 
-        <div class="grid">
+                ${tags(profile)}
+              `
+            : ""
+        }
 
-          ${
-            beans
-              .map((bean) =>
-                card(
-                  bean,
-                  [
-                    bean.process,
-                    bean.variety
-                  ]
-                    .filter(Boolean)
-                    .join(" · "),
-                  `bean/${bean.id}`
-                )
-              )
-              .join("") ||
-            `
-              <div class="empty">
-                目前尚未建立 Coffee Bean / Lot。
-              </div>
-            `
-          }
+
+        <div class="atlas-summary atlas-summary--single">
+
+          <div>
+            <strong>${beans.length}</strong>
+
+            <span>
+              ${beans.length === 1 ? "COFFEE" : "COFFEES"}
+            </span>
+          </div>
 
         </div>
-      `;
+
+      </section>
+
+
+      <div class="section">
+        COFFEE FROM HERE
+      </div>
+
+
+      <div class="origin-bean-grid">
+
+        ${
+          beanCards ||
+          `
+            <div class="empty">
+              目前尚未建立 Coffee Bean / Lot。
+            </div>
+          `
+        }
+
+      </div>
+
+    `;
 
     return;
-  }
-
+  } 
 
 /* =========================================================
    V1.7.0 — BEAN DETAIL
