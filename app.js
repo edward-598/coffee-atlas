@@ -1853,6 +1853,7 @@ window.addEventListener(
 
 fetch("data/atlas.json")
   .then(function (response) {
+
     if (!response.ok) {
       throw new Error(
         "atlas.json 載入失敗"
@@ -1863,11 +1864,14 @@ fetch("data/atlas.json")
   })
 
   .then(function (data) {
+
     db = data;
+
     render();
   })
 
   .catch(function (error) {
+
     console.error(error);
 
     app.innerHTML = `
@@ -1876,4 +1880,5 @@ fetch("data/atlas.json")
         請確認 data/atlas.json 已正確上傳。
       </div>
     `;
+
   });
