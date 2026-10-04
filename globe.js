@@ -99,6 +99,131 @@ export function initCoffeeGlobe() {
 
   scene.add(globe);
 
+   /* -----------------------------------------
+   V1.8.2b — LATITUDE / LONGITUDE GRID
+   ----------------------------------------- */
+
+const gridGroup = new THREE.Group();
+
+const gridMaterial =
+  new THREE.LineBasicMaterial({
+    color: 0xd5a96c,
+    transparent: true,
+    opacity: 0.12
+  });
+
+
+/* ---------- LATITUDE ---------- */
+
+for (
+  let latitude = -60;
+  latitude <= 60;
+  latitude += 30
+) {
+
+  const lat =
+    THREE.MathUtils.degToRad(
+      latitude
+    );
+
+  const radius =
+    1.355 * Math.cos(lat);
+
+  const y =
+    1.355 * Math.sin(lat);
+
+  const points = [];
+
+  for (
+    let angle = 0;
+    angle <= 360;
+    angle += 4
+  ) {
+
+    const a =
+      THREE.MathUtils.degToRad(
+        angle
+      );
+
+    points.push(
+      new THREE.Vector3(
+        radius * Math.cos(a),
+        y,
+        radius * Math.sin(a)
+      )
+    );
+  }
+
+  const lineGeometry =
+    new THREE.BufferGeometry()
+      .setFromPoints(points);
+
+  const line =
+    new THREE.Line(
+      lineGeometry,
+      gridMaterial
+    );
+
+  gridGroup.add(line);
+}
+
+
+/* ---------- LONGITUDE ---------- */
+
+for (
+  let longitude = 0;
+  longitude < 180;
+  longitude += 30
+) {
+
+  const lon =
+    THREE.MathUtils.degToRad(
+      longitude
+    );
+
+  const points = [];
+
+  for (
+    let latitude = -90;
+    latitude <= 90;
+    latitude += 4
+  ) {
+
+    const lat =
+      THREE.MathUtils.degToRad(
+        latitude
+      );
+
+    const radius =
+      1.355 * Math.cos(lat);
+
+    const y =
+      1.355 * Math.sin(lat);
+
+    points.push(
+      new THREE.Vector3(
+        radius * Math.cos(lon),
+        y,
+        radius * Math.sin(lon)
+      )
+    );
+  }
+
+  const lineGeometry =
+    new THREE.BufferGeometry()
+      .setFromPoints(points);
+
+  const line =
+    new THREE.Line(
+      lineGeometry,
+      gridMaterial
+    );
+
+  gridGroup.add(line);
+}
+
+
+scene.add(gridGroup);
 
   /* -----------------------------------------
      ATMOSPHERE / OUTLINE
