@@ -1873,9 +1873,5 @@ fetch("data/atlas.json")
         資料載入失敗，
         請確認 data/atlas.json 已正確上傳。
       </div>
- `;
-
-    mountCoffeeGlobe();
-
-    return;
-  }
+    `;
+  });
