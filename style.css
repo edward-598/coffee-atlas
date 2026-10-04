@@ -916,3 +916,48 @@ a,
 .fav {
   cursor: pointer;
 }
+
+/* =========================================================
+   V1.8.2a — INTERACTIVE GLOBE
+   ========================================================= */
+
+.coffee-globe {
+  width: 100%;
+  max-width: 390px;
+  min-height: 300px;
+
+  margin: 0 auto;
+
+  position: relative;
+
+  overflow: hidden;
+
+  touch-action: pan-y;
+
+  cursor: grab;
+}
+
+.coffee-globe:active {
+  cursor: grabbing;
+}
+
+.coffee-globe canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0 auto;
+
+  outline: none;
+}
+
+
+@media (max-width: 520px) {
+
+  .coffee-globe {
+    max-width: 330px;
+    min-height: 280px;
+  }
+
+}
