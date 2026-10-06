@@ -639,10 +639,277 @@ originMarkers.forEach(
   controls.autoRotate = true;
   controls.autoRotateSpeed = 0.45;
 
+/* =========================================================
+   V1.8.2d — MARKER INTERACTION
+   Hover label + Click navigation
+   ========================================================= */
 
-  /* -----------------------------------------
+const raycaster =
+  new THREE.Raycaster();
+
+const pointer =
+  new THREE.Vector2();
+
+
+/* ---------- TOOLTIP ---------- */
+
+const tooltip =
+  document.createElement("div");
+
+tooltip.style.position = "absolute";
+tooltip.style.pointerEvents = "none";
+
+tooltip.style.padding = "6px 10px";
+
+tooltip.style.border =
+  "1px solid rgba(213,169,108,0.45)";
+
+tooltip.style.borderRadius =
+  "999px";
+
+tooltip.style.background =
+  "rgba(17,16,14,0.92)";
+
+tooltip.style.color =
+  "#f4eee4";
+
+tooltip.style.fontSize =
+  "12px";
+
+tooltip.style.letterSpacing =
+  "0.08em";
+
+tooltip.style.whiteSpace =
+  "nowrap";
+
+tooltip.style.transform =
+  "translate(-50%, -140%)";
+
+tooltip.style.opacity = "0";
+
+tooltip.style.transition =
+  "opacity 0.15s ease";
+
+tooltip.style.zIndex = "10";
+
+container.appendChild(
+  tooltip
+);
+
+
+/* ---------- POINTER POSITION ---------- */
+
+function updatePointer(event) {
+
+  const rect =
+    renderer.domElement
+      .getBoundingClientRect();
+
+  pointer.x =
+    (
+      (
+        event.clientX -
+        rect.left
+      ) /
+      rect.width
+    ) * 2 - 1;
+
+  pointer.y =
+    -(
+      (
+        event.clientY -
+        rect.top
+      ) /
+      rect.height
+    ) * 2 + 1;
+
+}
+
+
+/* ---------- FIND VISIBLE MARKER ---------- */
+
+function getMarkerHit() {
+
+  raycaster.setFromCamera(
+    pointer,
+    camera
+  );
+
+  /*
+    Include globe so markers on the
+    back side cannot be selected
+    through the Earth.
+  */
+
+  const objects = [
+    globe,
+    ...originMarkers
+  ];
+
+  const hits =
+    raycaster.intersectObjects(
+      objects,
+      false
+    );
+
+  if (!hits.length) {
+    return null;
+  }
+
+  const firstHit =
+    hits[0].object;
+
+  if (
+    firstHit.userData &&
+    firstHit.userData.countryId
+  ) {
+    return firstHit;
+  }
+
+  return null;
+}
+
+/* ---------- HOVER ---------- */
+
+function handlePointerMove(event) {
+
+  /*
+    While dragging the globe,
+    do not show marker tooltip.
+  */
+
+  if (event.buttons !== 0) {
+
+    tooltip.style.opacity = "0";
+
+    renderer.domElement.style.cursor =
+      "grabbing";
+
+    return;
+  }
+
+
+  updatePointer(event);
+
+  const marker =
+    getMarkerHit();
+
+
+  if (!marker) {
+
+    tooltip.style.opacity = "0";
+
+    renderer.domElement.style.cursor =
+      "grab";
+
+    return;
+  }
+
+
+  const rect =
+    container.getBoundingClientRect();
+
+
+  tooltip.textContent =
+    marker.userData.name.toUpperCase();
+
+
+  tooltip.style.left =
+    `${event.clientX - rect.left}px`;
+
+  tooltip.style.top =
+    `${event.clientY - rect.top}px`;
+
+
+  tooltip.style.opacity = "1";
+
+  renderer.domElement.style.cursor =
+    "pointer";
+}
+
+/* ---------- CLICK / TAP ---------- */
+
+let pointerDownPosition =
+  null;
+
+
+function handlePointerDown(event) {
+
+  pointerDownPosition = {
+    x: event.clientX,
+    y: event.clientY
+  };
+
+}
+
+function handlePointerUp(event) {
+
+  if (!pointerDownPosition) {
+    return;
+  }
+
+  const distance =
+    Math.hypot(
+      event.clientX -
+        pointerDownPosition.x,
+
+      event.clientY -
+        pointerDownPosition.y
+    );
+
+
+  pointerDownPosition = null;
+
+
+  /*
+    More than 6px means the user
+    was rotating the globe.
+  */
+
+  if (distance > 6) {
+    return;
+  }
+
+
+  updatePointer(event);
+
+  const marker =
+    getMarkerHit();
+
+
+  if (!marker) {
+    return;
+  }
+
+
+  const countryId =
+    marker.userData.countryId;
+
+
+  window.location.hash =
+    `country/${countryId}`;
+
+}
+
+/* ---------- EVENTS ---------- */
+
+renderer.domElement.addEventListener(
+  "pointermove",
+  handlePointerMove
+);
+
+renderer.domElement.addEventListener(
+  "pointerdown",
+  handlePointerDown
+);
+
+renderer.domElement.addEventListener(
+  "pointerup",
+  handlePointerUp
+);
+/* -----------------------------------------
      RESPONSIVE SIZE
-     ----------------------------------------- */
+----------------------------------------- */
 
   function resizeGlobe() {
 
@@ -717,10 +984,33 @@ originMarkers.forEach(
 
   return function destroyGlobe() {
 
-    cancelAnimationFrame(
-      animationId
-    );
+  renderer.domElement.removeEventListener(
+    "pointermove",
+    handlePointerMove
+  );
 
+  renderer.domElement.removeEventListener(
+    "pointerdown",
+    handlePointerDown
+  );
+
+  renderer.domElement.removeEventListener(
+    "pointerup",
+    handlePointerUp
+  );
+
+  tooltip.remove();
+
+
+  cancelAnimationFrame(
+    animationId
+  );
+
+  resizeObserver.disconnect();
+
+  controls.dispose();
+
+     
     resizeObserver.disconnect();
 
     controls.dispose();
