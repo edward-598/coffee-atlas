@@ -988,6 +988,28 @@ renderer.domElement.addEventListener(
 
     controls.update();
 
+   originMarkers.forEach(
+  (marker) => {
+
+    const target =
+      marker.userData.isHovered
+        ? 1.35
+        : 1;
+
+    const nextScale =
+      THREE.MathUtils.lerp(
+        marker.scale.x,
+        target,
+        0.12
+      );
+
+    marker.scale.setScalar(
+      nextScale
+    );
+
+  }
+);
+
     renderer.render(
       scene,
       camera
