@@ -525,6 +525,7 @@ const glowMaterial =
 
 const originMarkers =
   [...markerGroup.children];
+const markerGlows = [];
 
 
 originMarkers.forEach(
@@ -540,13 +541,19 @@ originMarkers.forEach(
       marker.position
     );
 
+    glow.userData.marker =
+      marker;
+
+    markerGlows.push(
+      glow
+    );
+
     markerGroup.add(
       glow
     );
 
   }
-);
-   
+);   
   /* -----------------------------------------
      ATMOSPHERE / OUTLINE
      ----------------------------------------- */
@@ -988,12 +995,12 @@ renderer.domElement.addEventListener(
 
     controls.update();
 
-   originMarkers.forEach(
-  (marker) => {
+originMarkers.forEach(
+  (marker, index) => {
 
     const target =
       marker.userData.isHovered
-        ? 3
+        ? 1.6
         : 1;
 
     const nextScale =
@@ -1006,6 +1013,18 @@ renderer.domElement.addEventListener(
     marker.scale.setScalar(
       nextScale
     );
+
+
+    const glow =
+      markerGlows[index];
+
+    if (glow) {
+
+      glow.scale.setScalar(
+        nextScale
+      );
+
+    }
 
   }
 );
