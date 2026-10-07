@@ -993,7 +993,7 @@ renderer.domElement.addEventListener(
 
     const target =
       marker.userData.isHovered
-        ? 1.35
+        ? 3
         : 1;
 
     const nextScale =
