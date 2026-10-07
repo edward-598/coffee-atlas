@@ -795,15 +795,21 @@ function handlePointerMove(event) {
     getMarkerHit();
 
 
-  if (!marker) {
+if (!marker) {
 
-    tooltip.style.opacity = "0";
+  tooltip.style.opacity = "0";
 
-    renderer.domElement.style.cursor =
-      "grab";
+  renderer.domElement.style.cursor =
+    "grab";
 
-    return;
-  }
+  originMarkers.forEach(
+    (item) => {
+      item.scale.setScalar(1);
+    }
+  );
+
+  return;
+}
 
 
   const rect =
