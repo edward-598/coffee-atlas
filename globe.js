@@ -791,8 +791,8 @@ function handlePointerMove(event) {
 
   updatePointer(event);
 
-  const marker =
-    getMarkerHit();
+const marker =
+  getMarkerHit();
 
 
 if (!marker) {
@@ -804,12 +804,25 @@ if (!marker) {
 
   originMarkers.forEach(
     (item) => {
-      item.scale.setScalar(1);
+      item.userData.isHovered =
+        false;
     }
   );
 
   return;
 }
+
+
+/* Marker hover state */
+
+originMarkers.forEach(
+  (item) => {
+
+    item.userData.isHovered =
+      item === marker;
+
+  }
+);
 
 
   const rect =
